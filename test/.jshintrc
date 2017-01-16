@@ -1,0 +1,29 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "angular": false,
+    "module": false,
+    "inject": false,
+    "require": false,
+    "__dirname": false,
+    "console": false,
+    "exports": false,
+    "browser": false,
+    "element": false,
+    "by": false,
+    "describe": false,
+    "fdescribe": false,
+    "xdescribe": false,
+    "beforeEach": false,
+    "it": false,
+    "xit" : false,
+    "fit" : false,
+    "expect": false,
+    "$": false,
+    "window": false,
+    "document": false,
+    "this": false,
+    "spyOn" : false,
+    "jasmine" : false
+  }
+}
