@@ -13,7 +13,8 @@ return gulp.src([
             'reflect-metadata/Reflect.js',
             'rxjs/**',
             'zone.js/dist/**',
-            '@angular/**'
+            '@angular/**',
+            'bootstrap/dist/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("dist/lib"));		
 });
