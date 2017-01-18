@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // routes declaration
 import { routing } from './app.routes';
@@ -16,7 +17,7 @@ import { TextReferencesDetailComponent } from './components/textReferences-detai
 import { TextReferenceService } from './services/textReferences.service';
 
 @NgModule({
-  imports:      [ BrowserModule, routing, FormsModule, HttpModule],
+  imports:      [ BrowserModule, routing, FormsModule, HttpModule, NgbModule.forRoot()],
   declarations: [ AppComponent, TextReferencesListComponent, TextReferencesDetailComponent ],
   bootstrap:    [ AppComponent ],
   providers:    [TextReferenceService]

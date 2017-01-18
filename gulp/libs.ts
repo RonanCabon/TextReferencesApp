@@ -14,7 +14,8 @@ return gulp.src([
             'rxjs/**',
             'zone.js/dist/**',
             '@angular/**',
-            'bootstrap/dist/**'
+            'bootstrap/dist/**',
+            '@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("dist/lib"));		
 });
