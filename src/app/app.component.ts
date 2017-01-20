@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
   <ngb-alert [dismissible]="false">
     <strong>Well done! ng-Bootstrap successfully loaded !!!</strong>
   </ngb-alert>
-</p>    
+</p>   
     <router-outlet></router-outlet>
     `
 })

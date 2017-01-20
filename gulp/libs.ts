@@ -15,7 +15,12 @@ return gulp.src([
             'zone.js/dist/**',
             '@angular/**',
             'bootstrap/dist/**',
-            '@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js'
+            '@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
+            '@swimlane/ngx-datatable/release/**',
+            //'@swimlane/ngx-datatable/release/index.js',
+            //'@swimlane/ngx-datatable/release/datatable.css',
+            //'@swimlane/ngx-datatable/release/material.css',
+            //'@swimlane/ngx-datatable/release/assets/icon.css',
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("dist/lib"));		
 });

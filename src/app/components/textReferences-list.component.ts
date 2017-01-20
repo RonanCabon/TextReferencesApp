@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TextReference } from '../models/textReference';
 import { TextReferenceService } from '../services/textReferences.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'textReferences-list',
@@ -20,6 +21,11 @@ import { TextReferenceService } from '../services/textReferences.service';
       {{errorMessage}}
     </section>
   </section>
+    <p>textReferences object from the backend:</p>
+    {{textReferences|json}}
+    <div>
+    <button class="btn btn-primary" (click)="gotoNgxDatatableList()">Test ngxDatatable list</button>
+    </div>
   `
 })
 export class TextReferencesListComponent implements OnInit{
@@ -31,7 +37,9 @@ export class TextReferencesListComponent implements OnInit{
   errorMessage: string = '';
   isLoading: boolean = true;
 
-  constructor(private textReferenceService:TextReferenceService){}
+  constructor(private textReferenceService:TextReferenceService,
+  private route: ActivatedRoute,
+  private router: Router){}
 
   ngOnInit(){ // initial action : populate the textReferences
     this.textReferenceService.getAll().subscribe(
@@ -40,5 +48,10 @@ export class TextReferencesListComponent implements OnInit{
       () => this.isLoading = false // onComplete
     );
   }
+
+  gotoNgxDatatableList(){ 
+        let link = ['/ngxdatatable'];
+        this.router.navigate(link);
+    }
 
 }

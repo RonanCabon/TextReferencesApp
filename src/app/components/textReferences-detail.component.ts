@@ -14,7 +14,7 @@ import { TextReferenceService } from '../services/textReferences.service';
        {{textReference?.key}} title  {{textReference?.value.title}}
     </p>
   </section>
-   <button (click)="gotoTextReferencesList()">Back to textReferences list</button>
+   <button class="btn btn-primary" (click)="gotoTextReferencesList()">Back to textReferences list</button>
   `
 })
 export class TextReferencesDetailComponent implements OnInit, OnDestroy{

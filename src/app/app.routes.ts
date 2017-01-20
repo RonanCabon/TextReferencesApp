@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { TextReferencesListComponent } from './components/textReferences-list.component';
 import { TextReferencesDetailComponent } from './components/textReferences-detail.component';
+import { NgxDatatableListComponent } from './components/ngxDatatable-list.component';
 
 // Route config let's you map routes to components
 const routes: Routes = [
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: '',
     redirectTo: '/references',
     pathMatch: 'full'
+  },
+  // map '/ngxdatatable' to '/ngxdatatable' list component
+  {
+    path: 'ngxdatatable',
+    component: NgxDatatableListComponent,
   },
 ];
 
