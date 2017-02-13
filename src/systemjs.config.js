@@ -26,6 +26,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       '@ng-bootstrap/ng-bootstrap': 'npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
       '@swimlane/ngx-datatable': 'npm:@swimlane/ngx-datatable/release/index.js',
+      'angular2-uuid': 'npm:angular2-uuid/index.js',      
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

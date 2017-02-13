@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -15,9 +15,9 @@ import { ActivatedRoute, Router } from '@angular/router';
    <button class="btn btn-primary" (click)="gotoTextReferencesList()">Back to textReferences list</button>
   `
 })
-export class NgxDatatableListComponent{
+export class NgxDatatableListComponent {
 
- rows = [
+  rows = [
     { name: 'Austin', gender: 'Male', company: 'Swimlane' },
     { name: 'Dany', gender: 'Male', company: 'KFC' },
     { name: 'Molly', gender: 'Female', company: 'Burger King' },
@@ -28,13 +28,13 @@ export class NgxDatatableListComponent{
     { name: 'Company' }
   ];
 
-constructor(
-  private route: ActivatedRoute,
-  private router: Router){}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { }
 
-gotoTextReferencesList(){ // management of the "back" button
-        let link = ['/references'];
-        this.router.navigate(link);
-    }
+  gotoTextReferencesList() { // management of the "back" button
+    let link = ['/references'];
+    this.router.navigate(link);
+  }
 
 }

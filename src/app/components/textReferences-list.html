@@ -1,0 +1,47 @@
+<section>
+    <section *ngIf="isLoading && !errorMessage">
+      Loading textReferences ... Retrieving data...
+    </section>
+    <div class="buttons-top-datatable">
+      <button class="btn btn-primary" type="button" (click)="createNewTextReference()">Create a new reference</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let textReference of textReferences">
+            <td>
+              <a href="#" [routerLink]="['/references', textReference.key]">
+                {{textReference.key}}
+              </a>
+            </td>
+            <td>{{textReference.value.category}}</td>
+            <td>{{textReference.value.title}}</td>
+            <td>
+              <a href="javascript:void(0)" (click)="openURLinNewTab(textReference)">
+                Open URL
+              </a>    
+            </td>
+            <td>
+              <button class="btn btn-primary" type="button" (click)="updateTextReference(textReference)">Update</button>
+              <button class="btn btn-primary" type="button" (click)="deleteTextReference(textReference)">Delete</button>                         
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <section *ngIf="errorMessage">
+      {{errorMessage}}
+    </section>
+</section>
+<p>textReferences object from the backend:</p>
+  {{textReferences|json}}
+<!-- <div>
+    <button class="btn btn-primary" (click)="gotoNgxDatatableList()">Test ngxDatatable list</button>
+</div> --> 

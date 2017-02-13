@@ -21,6 +21,7 @@ return gulp.src([
             //'@swimlane/ngx-datatable/release/datatable.css',
             //'@swimlane/ngx-datatable/release/material.css',
             //'@swimlane/ngx-datatable/release/assets/icon.css',
+            'angular2-uuid/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("dist/lib"));		
 });

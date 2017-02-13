@@ -1,0 +1,52 @@
+<form [formGroup]="textReferenceForm" novalidate (ngSubmit)="save(textReferenceForm.value)">
+
+    <!-- We'll add our form controls here -->
+
+    <div>
+        <label>Id</label>
+        <input type="number" formControlName="id">
+    </div>
+
+    <div>
+        <label>Category</label>
+        <input type="text" formControlName="category">
+    </div>
+
+    <div>
+        <label>Title</label>
+        <input type="text" formControlName="title">
+    </div>
+
+    <div>
+        <label>Url</label>
+        <input type="text" formControlName="url">
+    </div>
+
+    <div>
+        <label>Description</label>
+        <input type="text" formControlName="description">
+    </div>
+
+    <div>
+        <label>BookmarkNote</label>
+        <input type="text" formControlName="bookmarkNote">
+    </div>
+
+    <div>
+        <label>Read</label>
+        <input type="checkbox" formControlName="read">
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+    <button class="btn btn-primary" (click)="reset()">RAZ form fields</button>
+
+</form>
+
+<a href="#" [routerLink]="['/references']">Back to list</a>
+
+<pre>{{textReferenceForm.value | json}}</pre>
+
+Form changes:
+<div *ngFor="let event of events">
+    <pre> {{ event | json }} </pre>
+</div>

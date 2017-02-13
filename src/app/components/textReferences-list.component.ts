@@ -1,57 +1,77 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { TextReference } from '../models/textReference';
 import { TextReferenceService } from '../services/textReferences.service';
+import { WindowRefService } from '../services/windowRef.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'textReferences-list',
-  template: `
-  <section>
-    <section *ngIf="isLoading && !errorMessage">
-      Loading textReferences ... Retrieving data...
-    </section>
-    <ul>
-      <li *ngFor="let textReference of textReferences">
-        <a href="#" [routerLink]="['/references', textReference.key]">
-          {{textReference.key}}
-        </a>
-      </li>
-    </ul>
-    <section *ngIf="errorMessage">
-      {{errorMessage}}
-    </section>
-  </section>
-    <p>textReferences object from the backend:</p>
-    {{textReferences|json}}
-    <div>
-    <button class="btn btn-primary" (click)="gotoNgxDatatableList()">Test ngxDatatable list</button>
-    </div>
-  `
+  templateUrl: './app/components/textReferences-list.html',
+  styleUrls: ['./app/components/textReferences-list.css']
 })
-export class TextReferencesListComponent implements OnInit{
+export class TextReferencesListComponent implements OnInit {
 
   // pre-allocating a typed array in TypeScript
   textReferences: TextReference[] = [];
-  test:any;
 
   errorMessage: string = '';
   isLoading: boolean = true;
 
-  constructor(private textReferenceService:TextReferenceService,
-  private route: ActivatedRoute,
-  private router: Router){}
+  constructor(private textReferenceService: TextReferenceService,
+    private zone : NgZone,
+    private route: ActivatedRoute,
+    private router: Router,
+    private winRef: WindowRefService) { } // enables to call the window object
 
-  ngOnInit(){ // initial action : populate the textReferences
+  ngOnInit() { // initial action : populate the textReferences
+    console.log('Call textReferences list ngOninit ...');
     this.textReferenceService.getAll().subscribe(
-      textReferences => this.textReferences = textReferences, // success case : get textReferences and assign it to the local textReferences
+        textReferences => this.textReferences = textReferences, // success case : get textReferences and assign it to the local textReferences
       error => this.errorMessage = error, // error case : get error and assign it to the local errorMessage
-      () => this.isLoading = false // onComplete
+      () => this.zone.run(() => { this.isLoading = false }) // onComplete => run Angular 2 change detections with Zone.js to update the DOM
     );
   }
 
-  gotoNgxDatatableList(){ 
-        let link = ['/ngxdatatable'];
-        this.router.navigate(link);
-    }
+  deleteTextReference(textReference: TextReference) {
+    // if (confirm('Are you sure you want to delete textReference ' + textReference.value.title)) {
+    this.textReferenceService.delete(textReference)
+      .subscribe(
+      (response) => {
+        //if (response.status === 204) {
+        this.textReferences.forEach((t: TextReference, i: number) => {
+          if (t.key === textReference.key) {
+            this.textReferences.splice(i, 1);
+          }
+        });
+        console.log(this.textReferences);
+      }
+      //}
+      );
+    //}
+
+    let link = ['/references'];
+    this.router.navigate(link);
+
+  }
+
+  openURLinNewTab(textReference: TextReference) {
+    this.winRef.nativeWindow.open(textReference.value.url, '_blank');
+  }
+
+  createNewTextReference() {
+    let link = ['/create'];
+    this.router.navigate(link);
+  }
+
+  updateTextReference(textReference: TextReference) {
+    console.log('updateTextReference: ', textReference);
+    let link = ['/update', textReference.key];
+    this.router.navigate(link);
+  }
+
+  gotoNgxDatatableList() {
+    let link = ['/ngxdatatable'];
+    this.router.navigate(link);
+  }
 
 }

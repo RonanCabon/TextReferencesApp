@@ -1,12 +1,12 @@
-export interface TextReference{
+export interface TextReference {
     key: string,
-    value:{
+    value: {
         id: number;
         category: string;
         title: string;
         url: string;
         description: string;
-        bookmarkNote : string;
+        bookmarkNote: string;
         read: boolean;
     }
 }

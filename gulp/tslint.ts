@@ -7,7 +7,7 @@ var runSequence = require('run-sequence');
 var tslint = require('gulp-tslint');
 
 var jshintFiles = ['src/app/**/*.js'];
-var tslintFiles = ['gulpfile.js','src/app/**/*.ts'];
+var tslintFiles = ['gulpfile.js','src/app/**/*.ts','!src/systemjs.config.js','!node_modules/**/*'];
 
 var testFiles = ['test/**/*.spec.js'];
 
